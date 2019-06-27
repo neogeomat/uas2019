@@ -788,3 +788,42 @@ $scope.ctrl = L.control.layers(baseLayers, overlays, {
     position: 'topright',
     autoZIndex: true
 }).addTo(map);
+
+// // wfs test start
+// var owsrootUrl = 'https://giv-project1.uni-muenster.de/geoserver/ows';
+
+// var defaultParameters = {
+//     service: 'WFS',
+//     version: '2.0',
+//     request: 'GetFeature',
+//     typeName: 'geonode:coordorthorect',
+//     outputFormat: 'text/javascript',
+//     format_options: 'callback:getJson',
+//     SrsName: 'EPSG:4326'
+// };
+
+// var parameters = L.Util.extend(defaultParameters);
+// var URL = owsrootUrl + L.Util.getParamString(parameters);
+
+// var WFSLayer = null;
+// var ajax = $.ajax({
+//     url: URL,
+//     dataType: 'jsonp',
+//     jsonpCallback: 'getJson',
+//     success: function(response) {
+//         WFSLayer = L.geoJson(response, {
+//             style: function(feature) {
+//                 return {
+//                     stroke: false,
+//                     fillColor: 'FFFFFF',
+//                     fillOpacity: 0
+//                 };
+//             },
+//             onEachFeature: function(feature, layer) {
+//                 popupOptions = { maxWidth: 200 };
+//                 layer.bindPopup("Popup text, access attributes with feature.properties.ATTRIBUTE_NAME", popupOptions);
+//             }
+//         }).addTo(map);
+//     }
+// });
+// // wfs test end

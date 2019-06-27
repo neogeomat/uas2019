@@ -43,6 +43,7 @@
         "leaflet-easybutton": "^2.3.0",
         "leaflet-sidebar": "^0.2.0",
         "leaflet.active-layers": "^0.3.0",
+        "leaflet-wfst": "^1.1.1",
         "mustache": "^2.3.0",
         "jquery": "3.4.1",
         "jquery.easing": "^1.4.1"
