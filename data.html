@@ -49,7 +49,8 @@
 
     <div id="wrapper">
 
-        <section w3-include-html="sidebar.html"></section>
+        <!-- <section w3-include-html="sidebar.html"></section> -->
+        <section id="sidebar"></section>
         <!-- page specific code goes here -->
         <!-- <iframe style="border: none;" height="1000px" width="100px" src="http://giv-project1.uni-muenster.de/layers/?limit=20&offset=0"></iframe> -->
         <iframe style="border: none;" height="600px" width="100%" src="http://giv-project1.uni-muenster.de/maps/14/embed"></iframe>
@@ -102,6 +103,28 @@
 </body>
 <script>
     includeHTML();
+</script>
+<script>
+    $('#sidebar').load('sidebar.html')
+        // includeHTML();
+</script>
+
+<script>
+    // script to populate the maps in sidebar with the maps published in geonode
+    $.getJSON("http://giv-project1.uni-muenster.de/api/maps/", function(data) {
+        var items = ['<h6 class="dropdown-header">Teams</h6>'];
+        $.each(data.objects, function(index) {
+            items.push('<a class="dropdown-item">' + data.objects[index].title + '</a>');
+        });
+
+        // items.appendTo($('#maps>div')[0]);
+        $('<div>', {
+            "class": "dropdown-menu",
+            "aria-labelledby": "mapsDropdown",
+            html: items.join("")
+        }).appendTo($('#maps')[0]);
+    });;
+    $('.dropdown-toggle').dropdown()
 </script>
 
 </html>

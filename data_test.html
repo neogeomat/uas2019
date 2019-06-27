@@ -1,0 +1,19 @@
+<script>
+    // debugger;
+    // script to populate the maps in sidebar with the layers published in geonode
+    $.getJSON("http://giv-project1.uni-muenster.de/api/layers/", function(data) {
+        var items = ['<h6 class="dropdown-header">Teams</h6>'];
+        $.each(data.objects, function(index) {
+            items.push('<a class="dropdown-item">' + data.objects[index].title + '</a>');
+        });
+        console.log(data.objects)
+        console.log(items)
+        console.log($('#main')[0])
+
+        // items.appendTo($('#maps>div')[0]);
+        $('<div>', {
+            html: items.join("")
+        }).appendTo($('#main'));
+    });
+</script>
+<!-- <iframe style="border: none;" height="600px" width="100%" src="http://giv-project1.uni-muenster.de/maps/14/embed"></iframe> -->
