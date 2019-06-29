@@ -104,42 +104,34 @@
 
 </body>
 <script>
-    $('#sidebar').load('sidebar.html')
+    // load view into one-page layout
+    $('#sidebar').load('sidebar.html', function() {
+        // script to populate the maps in sidebar with the maps published in geonode
+        $.getJSON("http://giv-project1.uni-muenster.de/api/maps/", function(data) {
+            var items = ['<h6 class="dropdown-header">Teams</h6>'];
+            $.each(data.objects, function(index) {
+                items.push('<a class="dropdown-item geonode-map" id="' + data.objects[index].title + '" detail_url="' + data.objects[index].detail_url + '" onclick="load_geonode_map(this)">' + data.objects[index].title + '</a>');
+            });
+
+            // items.appendTo($('#maps>div')[0]);
+            $('<div>', {
+                "class": "dropdown-menu",
+                "aria-labelledby": "mapsDropdown",
+                html: items.join("")
+            }).appendTo($('#maps')[0]);
+            console.log('map menu populated')
+        });
+        console.log('sidebar populated')
+    })
+    $('.dropdown-toggle').dropdown()
     $('#main').load('view/dashboard.html')
-        // includeHTML();
 </script>
 
 <script>
-    // script to populate the maps in sidebar with the layers published in geonode
-    $.getJSON("http://giv-project1.uni-muenster.de/api/layers/", function(data) {
-        var items = ['<h6 class="dropdown-header">Teams</h6>'];
-        $.each(data.objects, function(index) {
-            items.push('<a class="dropdown-item">' + data.objects[index].title + '</a>');
-        });
-
-        // items.appendTo($('#maps>div')[0]);
-        $('<div>', {
-            "class": "dropdown-menu",
-            "aria-labelledby": "mapsDropdown",
-            html: items.join("")
-        }).appendTo($('#maps')[0]);
-    });
-
-    // script to populate the maps in sidebar with the maps published in geonode
-    $.getJSON("http://giv-project1.uni-muenster.de/api/maps/", function(data) {
-        var items = ['<h6 class="dropdown-header">Teams</h6>'];
-        $.each(data.objects, function(index) {
-            items.push('<a class="dropdown-item">' + data.objects[index].title + '</a>');
-        });
-
-        // items.appendTo($('#maps>div')[0]);
-        $('<div>', {
-            "class": "dropdown-menu",
-            "aria-labelledby": "mapsDropdown",
-            html: items.join("")
-        }).appendTo($('#maps')[0]);
-    });
-    $('.dropdown-toggle').dropdown()
+    function load_geonode_map(ele) {
+        // debugger
+        $('#main').html('<iframe style="width: 600px;height:580px;" frameborder="0" scrolling="no" allowfullscreen="" src="http://giv-project1.uni-muenster.de/' + ele.getAttribute('detail_url') + '/embed"></iframe>')
+    }
 </script>
 
 </html>
