@@ -52,8 +52,10 @@
         <!-- <section w3-include-html="sidebar.html"></section> -->
         <section id='sidebar'></section>
 
-        <section id="main">
-        </section>
+        <div id="content-wrapper">
+            <section id="main">
+            </section>
+        </div>
         <!-- /.content-wrapper -->
 
     </div>
@@ -130,7 +132,7 @@
 <script>
     function load_geonode_map(ele) {
         // debugger
-        $('#main').html('<iframe style="width: 600px;height:580px;" frameborder="0" scrolling="no" allowfullscreen="" src="http://giv-project1.uni-muenster.de/' + ele.getAttribute('detail_url') + '/embed"></iframe>')
+        $('#main').html('<iframe style="width: 100%;height:600px;" frameborder="0" scrolling="no" allowfullscreen="" src="http://giv-project1.uni-muenster.de/' + ele.getAttribute('detail_url') + '/embed"></iframe>')
     }
 </script>
 
