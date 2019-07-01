@@ -1,10 +1,27 @@
 <script>
     // debugger;
     // script to populate the maps in sidebar with the layers published in geonode
-    $.getJSON("http://giv-project1.uni-muenster.de/api/layers/", function(data) {
-        var items = ['<h6 class="dropdown-header">Data</h6>'];
+    var geonode_url = 'http://giv-project1.uni-muenster.de';
+    var api_suffix = '/api/layers/';
+    $.getJSON(geonode_url + api_suffix, function(data) {
+        var layoutstart = '<div class="container-fluid">';
+        var layoutend = '</div></div>'
+        var items = [];
         $.each(data.objects, function(index) {
-            items.push('<a class="dropdown-item">' + data.objects[index].title + '</a>');
+            items.push('<div class="row">\
+                            <div class="col-md-4">\
+                                    <img src="' + data.objects[index].thumbnail_url + '">\
+                                    </img>\
+                            </div>\
+                            <div class="col-md-4">\
+                                <h2>\
+                                    <a href ="' + geonode_url + data.objects[index].detail_url + '" class="dropdown-item">\
+                                        ' + data.objects[index].title + '\
+                                    </a>\
+                                    <h6> Published Date: ' + data.objects[index].date + '</h6>\
+                                </h2>\
+                            </div>\
+                        </div>');
         });
         console.log(data.objects)
         console.log(items)
@@ -12,7 +29,45 @@
 
         // items.appendTo($('#maps>div')[0]);
         $('<div>', {
-            html: items.join("")
+            html: layoutstart + items.join("") + layoutend
         }).appendTo($('#main'));
     });
 </script>
+
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>
+                Heading
+            </h2>
+            <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            </p>
+            <p>
+                <a class="btn" href="#">View details »</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>
+                Heading
+            </h2>
+            <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            </p>
+            <p>
+                <a class="btn" href="#">View details »</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>
+                Heading
+            </h2>
+            <p>
+                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            </p>
+            <p>
+                <a class="btn" href="#">View details »</a>
+            </p>
+        </div>
+    </div>
+</div> -->
