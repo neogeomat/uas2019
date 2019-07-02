@@ -19,9 +19,27 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-    <script src="/js/includeHTML.js"></script>
 
 </head>
+<style>
+    body {
+        background-image: url("sky2.jpg");
+        background-size: 100% 100%;
+    }
+    
+    .container {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .container h1 {
+        font-weight: bold;
+        color: #000000;
+    }
+    
+    .container p {
+        color: #000000;
+    }
+</style>
 
 <body id="page-top">
 
@@ -52,8 +70,10 @@
         <!-- <section w3-include-html="sidebar.html"></section> -->
         <section id='sidebar'></section>
 
-        <section id="main">
-        </section>
+        <div id="content-wrapper">
+            <section id="main">
+            </section>
+        </div>
         <!-- /.content-wrapper -->
 
     </div>
@@ -130,7 +150,7 @@
 <script>
     function load_geonode_map(ele) {
         // debugger
-        $('#main').html('<iframe style="width: 600px;height:580px;" frameborder="0" scrolling="no" allowfullscreen="" src="http://giv-project1.uni-muenster.de/' + ele.getAttribute('detail_url') + '/embed"></iframe>')
+        $('#main').html('<iframe style="width: 100%;height:600px;" frameborder="0" scrolling="no" allowfullscreen="" src="http://giv-project1.uni-muenster.de/' + ele.getAttribute('detail_url') + '/embed"></iframe>')
     }
 </script>
 
