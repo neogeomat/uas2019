@@ -45,7 +45,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <a class="navbar-brand mr-1" href="index.html">UAS 2019</a>
+        <a class="navbar-brand mr-1" href="static/index.html">UAS 2019</a>
 
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -97,35 +97,35 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="static/login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="static/vendor/chart.js/Chart.min.js"></script>
+    <script src="static/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="static/vendor/datatables/dataTables.bootstrap4.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="static/js/sb-admin.min.js"></script>
 
     <!-- Demo scripts for this page-->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="static/js/demo/datatables-demo.js"></script>
+    <script src="static/js/demo/chart-area-demo.js"></script>
 
 </body>
 <script>
     // load view into one-page layout
-    $('#sidebar').load('sidebar.html', function() {
+    $('#sidebar').load('static/sidebar.html', function() {
         // script to populate the maps in sidebar with the maps published in geonode
         $.getJSON("http://giv-project1.uni-muenster.de/api/maps/", function(data) {
             var items = ['<h6 class="dropdown-header">Teams</h6>'];
@@ -144,7 +144,7 @@
         console.log('sidebar populated')
     })
     $('.dropdown-toggle').dropdown()
-    $('#main').load('view/dashboard.html')
+    $('#main').load('static/view/dashboard.html')
 </script>
 
 <script>
